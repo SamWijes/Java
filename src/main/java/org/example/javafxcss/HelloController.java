@@ -10,6 +10,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.util.List;
 
 public class HelloController {
 
@@ -43,9 +44,11 @@ public class HelloController {
 				new FileChooser.ExtensionFilter("Text", "*.zip"),
 				new FileChooser.ExtensionFilter("PDF", "*.pdf"),
 				new FileChooser.ExtensionFilter("All Files", "*.*"));
-		File file=chooser.showOpenDialog(gridpane.getScene().getWindow());
+		List<File> file=chooser.showOpenMultipleDialog(gridpane.getScene().getWindow());
 		if (file != null) {
-			System.out.println(file.getPath());
+			for (File file1 : file) {
+				System.out.println(file1.getPath());
+			}
 		}else System.out.println("Chooser cancelled");
 	}
 	@FXML
