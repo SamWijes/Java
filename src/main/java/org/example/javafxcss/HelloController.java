@@ -8,14 +8,20 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
+import java.awt.Desktop;
+
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class HelloController {
 
 	@FXML
 	private Label label;
+
 	@FXML
 	private Button button4;
 	@FXML
@@ -53,7 +59,13 @@ public class HelloController {
 	}
 	@FXML
 	public void handleLinkClick(){
-		System.out.println("link CLicked");
+//		System.out.println("link CLicked");
+		try	{
+
+			Desktop.getDesktop().browse(new URI("https://www.google.com"));
+		} catch (IOException | URISyntaxException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
